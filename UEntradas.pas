@@ -70,6 +70,10 @@ type
     procedure BtnEliminar2Click(Sender: TObject);
     procedure BtnAceptar2Click(Sender: TObject);
     procedure BtnCancelar2Click(Sender: TObject);
+    procedure BtnSiguiente1Click(Sender: TObject);
+    procedure BtnUltimo1Click(Sender: TObject);
+    procedure BtnAnterior1Click(Sender: TObject);
+    procedure BtnPrimero1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -117,6 +121,22 @@ begin
       Post;
     end;
 
+    if acc = 2 then begin
+      DMAlmacen.QryABC.Close;
+      DMAlmacen.QryABC.SQL.Clear;
+      DMAlmacen.QryABC.SQL.Text := ' update m_entradas origen = '+ QuotedStr(EOrigen.Text) +
+                                   ', partida = '+ QuotedStr(EPartida.Text) +
+                                   ', fch_ingreso = '+ QuotedStr(DateToStr(DFch_ingreso.Date)) +
+                                   ', autoriza = '+ QuotedStr(EAutoriza.Text) +
+                                   ', recibe = '+ QuotedStr(ERecibe.Text) +
+                                   ' where id_mentrada = 2 ';
+
+
+      //ShowMessage(DMAlmacen.QryABC.SQL.Text);
+
+      DMAlmacen.QryABC.ExecSQL;
+    end;
+
   end;
 end;
 
@@ -124,6 +144,11 @@ procedure TFEntradas.BtnAceptar2Click(Sender: TObject);
 begin
   PBotones1 (True, False, 2);
   PPaneles1(False);
+end;
+
+procedure TFEntradas.BtnAnterior1Click(Sender: TObject);
+begin
+  DMAlmacen.m_entradas.Prior;
 end;
 
 procedure TFEntradas.BtnCancelar1Click(Sender: TObject);
@@ -141,6 +166,7 @@ end;
 procedure TFEntradas.BtnEditar1Click(Sender: TObject);
 begin
   PBotones1 (False, True, 1);
+  acc := 2
 end;
 
 procedure TFEntradas.BtnEditar2Click(Sender: TObject);
@@ -169,9 +195,24 @@ begin
   PBotones1 (False, True, 2);
 end;
 
+procedure TFEntradas.BtnPrimero1Click(Sender: TObject);
+begin
+  DMAlmacen.m_entradas.First;
+end;
+
 procedure TFEntradas.BtnSalirClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFEntradas.BtnSiguiente1Click(Sender: TObject);
+begin
+  DMAlmacen.m_entradas.Next;
+end;
+
+procedure TFEntradas.BtnUltimo1Click(Sender: TObject);
+begin
+  DMAlmacen.m_entradas.Last;
 end;
 
 procedure TFEntradas.FormClose(Sender: TObject; var Action: TCloseAction);

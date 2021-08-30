@@ -3477,6 +3477,7 @@ object FEntradas: TFEntradas
       FFFFFF000000}
     ParentShowHint = False
     ShowHint = True
+    OnClick = BtnPrimero1Click
   end
   object BtnAnterior1: TSpeedButton
     Left = 464
@@ -3668,6 +3669,7 @@ object FEntradas: TFEntradas
       FFFFFF000000}
     ParentShowHint = False
     ShowHint = True
+    OnClick = BtnAnterior1Click
   end
   object BtnSiguiente1: TSpeedButton
     Left = 528
@@ -3859,6 +3861,7 @@ object FEntradas: TFEntradas
       FFFFFF000000}
     ParentShowHint = False
     ShowHint = True
+    OnClick = BtnSiguiente1Click
   end
   object BtnUltimo1: TSpeedButton
     Left = 592
@@ -4050,6 +4053,7 @@ object FEntradas: TFEntradas
       FFFFFF000000}
     ParentShowHint = False
     ShowHint = True
+    OnClick = BtnUltimo1Click
   end
   object BtnImprimir1: TSpeedButton
     Left = 656
